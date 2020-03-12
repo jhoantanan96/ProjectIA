@@ -1,0 +1,83 @@
+﻿intents:
+  - saludo
+  - ventas
+  - soporte
+  - otro
+
+actions:
+- utter_saludo
+- utter_summit
+- utter_form
+- utter_soporte
+- utter_ventas
+- utter_form2
+
+
+templates:
+  utter_saludo:
+  - text: "Hola 🚀, nuestro horario de atención es de lunes a viernes, de 09:00 a 18:00 horas, ¿cómo puedo ayudarte?"
+    buttons:
+    - title: "Ventas"
+      payload: "ventas"
+    - title: "Soporte"
+      payload: "soporte"
+    - title: "Otro"
+      payload: "otro"
+  
+  utter_form:
+  - text: "Gracias por contactarnos {name_people},un ejecutivo se pondrá en contacto contigo lo más pronto posible."
+
+  utter_soporte:
+  - text: "Soporte: Proporciona por favor tu nombre y apellido"
+
+  utter_ventas:
+  - text: "Ventas: Proporciona por favor tu nombre y apellido"
+
+  utter_summit:
+  - text: "¡Tu información ha sido recibida exitosamente!"
+  
+  utter_ask_num_phone:
+  - text: "Ingresa tu número telefónico."
+
+  utter_wrong_num_phone:
+  - text: "El número ingresado, no cumple con el formato aceptado (10 dígitos), por favor inténtalo nuevamente."
+  
+  utter_ask_problem:
+  - text: "¿Cuál es su duda?"
+  
+  utter_ask_peoble_other:
+  - text: "Proporciona por favor tu nombre y apellido"
+  
+  utter_form2:
+  - text: "Gracias por contactarnos {peoble_other},un ejecutivo se pondrá en contacto contigo lo más pronto posible para resolver tu duda."
+  
+entities:
+  - num_phone
+  - name_people
+  - problem
+  - peoble_other
+  
+slots:
+  num_phone:
+    type: text
+    auto_fill: false
+
+  name_people:
+    type: text
+    auto_fill: false
+  
+  problem:
+    type: text
+    auto_fill: false
+
+  peoble_other:
+    type: text
+    auto_fill: false
+  
+forms:
+  - info_form
+  - plroblem_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,68 @@
+session_config:
+  session_expiration_time: 60.0
+  carry_over_slots_to_new_session: true
+intents:
+- saludo
+- ventas
+- soporte
+- otro
+entities:
+- num_phone
+- name_people
+- problem
+- departamento
+slots:
+  departamento:
+    type: text
+    auto_fill: false
+  name_people:
+    type: text
+    auto_fill: false
+  num_phone:
+    type: text
+    auto_fill: false
+  problem:
+    type: text
+    auto_fill: false
+templates:
+  utter_saludo:
+  - text: Hola, ¿Cómo puedo ayudarte?
+    buttons:
+    - title: Ventas
+      payload: ventas
+    - title: Soporte
+      payload: soporte
+    - title: Otro
+      payload: otro
+  utter_form:
+  - text: 'Gracias {name_people} un ejecutivo se pondrá en contacto a tu número telefónico:
+      {num_phone}'
+  utter_soporte:
+  - text: '{departamento}: Proporciona la siguiente información para ser atendido
+      por un asesor '
+  utter_ventas:
+  - text: '{departamento}: Proporciona la siguiente información para ser atendido
+      por un asesor '
+  utter_summit:
+  - text: 'Tu información ha sido almacenada exitosamente '
+  utter_ask_num_phone:
+  - text: 'Ingresa tu número telefónico:'
+  utter_ask_name_people:
+  - text: 'Ingresa tu nombre y apellido:'
+  utter_wrong_num_phone:
+  - text: El numero ingresado, no cumple con el formato aceptado, Inténtalo nuevamente.
+  utter_ask_problem:
+  - text: ¿Cuál es su problema?
+  utter_form2:
+  - text: 'Gracias {name_people} tu problema ha sido enviado y un ejecutivo se pondrá
+      en contacto a tu número telefónico: {num_phone}'
+actions:
+- utter_saludo
+- utter_summit
+- utter_form
+- utter_soporte
+- utter_ventas
+- utter_form2
+forms:
+- info_form
+- plroblem_form
